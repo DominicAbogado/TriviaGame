@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Trivia Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" /> -->
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="header">I'll Be There For You</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="gameSpace">
+                    <div id="show-number"></div>
+                    <br>
+                    <button id="stop">Stop</button>
+                    <button id="resume">Resume</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 gameSpace">
+                <div class="question question1">
+                    <h3>________ is NOT part of the main cast</h3>
+                    <br>
+                    <form>
+                        <input type="radio" name="choice" value="Joey"> Joey
+                        <input type="radio" name="choice" value="Monica"> Monica
+                        <input type="radio" name="choice" value="Rachel"> Rachel
+                        <input type="radio" name="choice" value="Larry"> Larry
+                    </form>
+                    <button id="quest1" onclick="submitAnswer()">Submit Answer </button>
+
+                </div>
+                <div class="question question1">
+                    <h3>______ is married to Chandler</h3>
+                    <br>
+                    <form>
+                        <input type="radio" name="choice" value="Phoebe"> Phoebe
+                        <input type="radio" name="choice" value="Monica"> Monica
+                        <input type="radio" name="choice" value="Rachel"> Rachel
+                        <input type="radio" name="choice" value="Larry"> Larry
+                    </form>
+                    <button id="quest2" onclick="submitAnswer()">Submit Answer </button>
+                </div>
+            </div>
+        </div>
+
+
+        <script src='./assets/javascript/app.js'></script>
+</body>
