@@ -27,39 +27,176 @@
                 <div class="gameSpace">
                     <div id="show-number"></div>
                     <br>
+                    <button id="startQuiz">Start</button>
                     <button id="stop">Stop</button>
                     <button id="resume">Resume</button>
                 </div>
             </div>
         </div>
         <div class="row">
+            <div class="col-md-12 quizPush"></div>
+            <div class="col-md-12 answerPush"></div>
+        </div>
+        <div class="row">
             <div class="col-md-12 gameSpace">
-                <div class="question question1">
-                    <h3>________ is NOT part of the main cast</h3>
-                    <br>
-                    <form>
-                        <input type="radio" name="choice" value="Joey"> Joey
-                        <input type="radio" name="choice" value="Monica"> Monica
-                        <input type="radio" name="choice" value="Rachel"> Rachel
-                        <input type="radio" name="choice" value="Larry"> Larry
-                    </form>
-                    <button id="quest1" onclick="submitAnswer()">Submit Answer </button>
-
-                </div>
-                <div class="question question1">
-                    <h3>______ is married to Chandler</h3>
-                    <br>
-                    <form>
-                        <input type="radio" name="choice" value="Phoebe"> Phoebe
-                        <input type="radio" name="choice" value="Monica"> Monica
-                        <input type="radio" name="choice" value="Rachel"> Rachel
-                        <input type="radio" name="choice" value="Larry"> Larry
-                    </form>
-                    <button id="quest2" onclick="submitAnswer()">Submit Answer </button>
+                <div class='row'>
+                    <div class="col-lg-12 question question1">
+                        <h3>________ is NOT part of the main cast</h3>
+                        <br>
+                        <form class="quiz">
+                            <input type="radio" class="question1" value="Joey"> Joey
+                            <input type="radio" class="question1" value="Monica"> Monica
+                            <input type="radio" class="question1" value="Rachel"> Rachel
+                            <input type="radio" class="question1" value="Kevin"> Kevin
+                        </form>
+                    </div>
                 </div>
             </div>
+            <div class="col-lg-12 question finish">
+                <button id="quest2" onclick="submitAnswer()">Submit Answers </button>
+            </div>
         </div>
+    </div>
+
+    <div class='col-lg-12 afterSubmit'>
+        <div id="correct"></div>
+
+    </div>
 
 
-        <script src='./assets/javascript/app.js'></script>
+    <script src='./assets/javascript/app.js'></script>
+</body>
+
+
+<!-- 
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Trivia Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+ <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" /> 
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="header">I'll Be There For You</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div id='quiz'></div>
+                <button id='submit'></button>
+                <div id='results'></div>
+
+            </div>
+
+            THIS IS THE JAVA SCRIPT
+$(document).ready(function () {
+
+    var quizContainer = $('quiz');
+    var resultsContainer = $('results');
+    var submitButton = $('submit');
+
+    function buildQuiz() {
+        var output = [];
+        myQuestions.forEach(
+            (currentQuestion, questionNumber) =>{
+                //Storing the list of answers
+                var answers = [];
+                // And for each available Answer
+                for (letter in currentQuestion.answers){
+                    answers.push(
+                        '$("<label>")
+                        <input type="radio" name="question${questionNumber}" value="${letter}">
+                        ${letter}:
+                        ${currentQuestion.answers[letter]}
+                        </label>'
+                    )
+                }
+            }
+        )
+     }
+
+    function showResults() { }
+
+    //Display Quiz Right Away
+    buildQuiz()
+
+    //On submit, show results
+    $('submit').on('click', showResults())
+
+    //Time to Build Questions
+    var myQuestions = [
+        {
+            question: '______ is NOT part of the main cast',
+            answers: {
+                a: 'Joey',
+                b: 'Rachel',
+                c: 'Monica',
+                d: 'Kevin'
+            },
+            correctAnswer: 'd'
+        },
+        {
+            question: '______ is married to Chandler',
+            answers: {
+                a: 'Joey',
+                b: 'Rachel',
+                c: 'Monica',
+                d: 'Kevin'
+            },
+            correctAnswer: 'c'
+        },
+        {
+            question: "______ is NOT the name of someone's sibling",
+            answers: {
+                a: 'Ursula',
+                b: 'Amy',
+                c: 'Ross',
+                d: 'Kevin'
+            },
+            correctAnswer: 'd'
+        },
+        {
+            question: "Name the Actress who plays Rachel's Sister 'Jill'",
+            answers: {
+                a: 'Christina Applegate',
+                b: 'Tara Reid',
+                c: 'Reese Witherspoon',
+                d: 'Denise Richards'
+            },
+            correctAnswer: 'd'
+        },
+
+        {
+            question: "Why does ______, the largest friend, not simply eat the other 5?",
+            answers: {
+                a: 'Ross',
+                b: 'Monica',
+                c: 'Joey',
+                d: 'Kevin'
+            },
+            correctAnswer: 'a'
+        }
+    ];
+
+
+
+
+})
+ -->
+
+
+<script src='test.js'></script>
 </body>

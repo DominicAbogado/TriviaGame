@@ -1,28 +1,27 @@
 $(document).ready(function () {
 
-    var quizContainer = document.getElementById('quiz');
-    var resultsContainer = document.getElementById('results');
-    var submitButton = document.getElementById('submit');
+    var correct = 0
+    var wrong = 0
 
-    function buildQuiz() { }
 
-    function showResults() { }
 
-    //Display Quiz Right Away
-    buildQuiz()
 
-    //On submit, show results
-    $('submit').on('click', showResults())
+    $('#startGame').click(function () {
+        $('.hide').hide()
 
-    //Time to Build Questions
-    var myQUestions = [
+
+    })
+
+
+
+    var myQuestions = [
         {
             question: '______ is NOT part of the main cast',
             answers: {
                 a: 'Joey',
                 b: 'Rachel',
                 c: 'Monica',
-                d: 'Larry'
+                d: 'Kevin'
             },
             correctAnswer: 'd'
         },
@@ -32,7 +31,7 @@ $(document).ready(function () {
                 a: 'Joey',
                 b: 'Rachel',
                 c: 'Monica',
-                d: 'Larry'
+                d: 'Kevin'
             },
             correctAnswer: 'c'
         },
@@ -42,7 +41,7 @@ $(document).ready(function () {
                 a: 'Ursula',
                 b: 'Amy',
                 c: 'Ross',
-                d: 'Larry'
+                d: 'Kevin'
             },
             correctAnswer: 'd'
         },
@@ -51,18 +50,38 @@ $(document).ready(function () {
             answers: {
                 a: 'Christina Applegate',
                 b: 'Tara Reid',
-                c: 'Larry the Cable Guy',
-                d: 'Reese Witherspoon'
+                c: 'Reese Witherspoon',
+                d: 'Denise Richards'
             },
-            correctAnswer: 'd'
+            correctAnswer: 'c'
         },
         {
-            question: "Name the Actress who plays Rachel's Sister 'Jill'",
+            question: "Which of these women were NOT married to Ross",
             answers: {
-                a: 'Christina Applegate',
-                b: 'Tara Reid',
-                c: 'Larry the Cable Guy',
-                d: 'Reese Witherspoon'
+                a: ' Rachel ',
+                b: 'Susan',
+                c: 'Carol',
+                d: 'Emily'
+            },
+            correctAnswer: 'b'
+        },
+        {
+            question: "______ is the name of one of Phoebe's triplets",
+            answers: {
+                a: 'Gary Buffay',
+                b: 'Chandler Buffay',
+                c: 'Alice Buffay',
+                d: 'Frank Jr. Buffay'
+            },
+            correctAnswer: 'b'
+        },
+        {
+            question: "Which of the follow did NOT date Chandler'",
+            answers: {
+                a: 'Janice',
+                b: 'Susie Underpants',
+                c: 'Kathy',
+                d: 'Angela'
             },
             correctAnswer: 'd'
         },
@@ -72,13 +91,135 @@ $(document).ready(function () {
                 a: 'Ross',
                 b: 'Monica',
                 c: 'Joey',
-                d: 'Larry'
+                d: 'Kevin'
             },
             correctAnswer: 'a'
         }
-    ]
+
+    ];
+
+    var quizContainer = document.getElementById('quiz');
+    var resultsContainer = document.getElementById('results');
+    var submitButton = document.getElementById('submit');
 
 
+
+    function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
+
+        function showQuestions(questions, quizContainer) {
+            var output = [];
+            var answers;
+
+            // for each question...
+            for (var i = 0; i < questions.length; i++) {
+
+                // first reset the list of answers
+                answers = [];
+
+                // for each available answer to this question...
+                for (letter in questions[i].answers) {
+
+                    // ...add an html radio button
+                    answers.push(
+                        '<label>'
+                        + '<input type="radio" name="question' + i + '" value="' + letter + '">'
+                        + letter + ': '
+                        + questions[i].answers[letter]
+                        + '</label>'
+                    );
+                }
+
+                // add this question and its answers to the output
+                output.push(
+                    '<div class="question">' + questions[i].question + '</div>'
+                    + '<div class="answers">' + answers.join('') + '</div>'
+                );
+            }
+
+            // finally combine our output list into one string of html and put it on the page
+            quizContainer.innerHTML = output.join('');
+        }
+
+
+        function showResults(questions, quizContainer, resultsContainer) {
+            // gather answer containers from our quiz
+            var answerContainers = quizContainer.querySelectorAll('.answers');
+
+            // keep track of user's answers
+            var userAnswer = '';
+            var numCorrect = 0;
+            // $('.endGame').css('visibility', 'visible')
+            $('.endGame').append('<p>Hello World')
+
+            // for each question...
+            for (var i = 0; i < questions.length; i++) {
+
+                // find selected answer
+                userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
+
+                // if answer is correct
+                if (userAnswer === questions[i].correctAnswer) {
+                    // add to the number of correct answers
+                    numCorrect++;
+
+                    // color the answers green
+                    answerContainers[i].style.color = 'lightgreen';
+                }
+                // if answer is wrong or blank
+                else {
+                    // color the answers red
+                    answerContainers[i].style.color = 'red';
+                }
+            }
+
+            // show number of correct answers out of total
+            resultsContainer.innerHTML = numCorrect + ' out of ' + questions.length;
+
+        }
+
+        // show the questions
+        showQuestions(questions, quizContainer);
+
+        // when user clicks submit, show results
+        submitButton.onclick = function () {
+            showResults(questions, quizContainer, resultsContainer);
+        }
+    }
+    generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+
+
+    //TIMER FUNCTION
+    var number = 3;
+
+    var intervalId;
+
+    //   $("#stop").on("click", stop);
+
+    $("#startGame").on("click", run);
+
+    function run() {
+        clearInterval(intervalId);
+        intervalId = setInterval(decrement, 1000);
+    }
+
+    function decrement() {
+
+        number--;
+
+        $("#show-number").html("<h2>" + number + "</h2>");
+
+        if (number === 0) {
+            stop();
+            alert()
+            showResults(questions, quizContainer, resultsContainer)
+        }
+    }
+
+    function stop() {
+        clearInterval(intervalId);
+    }
 
 
 })
+
+

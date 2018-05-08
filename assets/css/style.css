@@ -1,15 +1,51 @@
 body{
-    background-color: #7B6DA1;
+    background-color: #835AA5;
     font-family: 'Permanent Marker', 'cursive';
-    color: #CEAA48;
+    color: #F5D05B;
 }
-
+#hide{
+    height:100%;
+    width:100%;
+    background-image: url("/assets/images/friendsDoor.jpg");
+    background-size: 100%;
+    z-index:1001;
+    position: fixed;
+}
+#startGame{
+    position:relative;
+    right: 40%;
+    left: 47%;
+    top:35%;
+}
 .header{
     text-align: center;
 }
-.gameSpace{
+.timer{
     text-align: center;
+}
+.gameSpace{
+    margin: 10px;
 }
 .question{
     margin-bottom: 20px;
+    text-align: center;
 }
+#quiz{
+    margin: 20px;
+    letter-spacing: 2px;
+    text-align:center;
+}
+input{
+    margin:10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.resultsDiv{
+    text-align: center;
+}
+/* .endGame{
+    visibility:hidden;
+    height:300px;
+    width: 100%;
+    text-align:center;
+} */
