@@ -180,6 +180,39 @@ $(document).ready(function () {
         // show the questions
         showQuestions(questions, quizContainer);
 
+        //Timer Function
+        var number = 30;
+
+        var intervalId;
+    
+        //   $("#stop").on("click", stop);
+    
+        $("#startGame").on("click", run);
+    
+        function run() {
+            clearInterval(intervalId);
+            intervalId = setInterval(decrement, 1000);
+        }
+    
+        function decrement() {
+    
+            number--;
+    
+            $("#show-number").html("<h2>" + number + "</h2>");
+    
+            if (number === 0) {
+                stop();
+                alert("Time's Up!")
+                showResults(questions, quizContainer, resultsContainer)
+            }
+        }
+    
+        function stop() {
+            clearInterval(intervalId);
+        }
+    
+    
+
         // when user clicks submit, show results
         submitButton.onclick = function () {
             showResults(questions, quizContainer, resultsContainer);
@@ -188,38 +221,7 @@ $(document).ready(function () {
     generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
 
 
-    //TIMER FUNCTION
-    var number = 3;
-
-    var intervalId;
-
-    //   $("#stop").on("click", stop);
-
-    $("#startGame").on("click", run);
-
-    function run() {
-        clearInterval(intervalId);
-        intervalId = setInterval(decrement, 1000);
-    }
-
-    function decrement() {
-
-        number--;
-
-        $("#show-number").html("<h2>" + number + "</h2>");
-
-        if (number === 0) {
-            stop();
-            alert()
-            showResults(questions, quizContainer, resultsContainer)
-        }
-    }
-
-    function stop() {
-        clearInterval(intervalId);
-    }
-
-
+   
 })
 
 

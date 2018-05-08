@@ -43,6 +43,9 @@ input{
 .resultsDiv{
     text-align: center;
 }
+.question{
+    font-size: 24px;
+}
 /* .endGame{
     visibility:hidden;
     height:300px;
