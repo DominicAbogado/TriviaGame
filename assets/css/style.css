@@ -6,7 +6,7 @@ body{
 #hide{
     height:100%;
     width:100%;
-    background-image: url("/assets/images/friendsDoor.jpg");
+    background-image: url('../images/friendsDoor.jpg');
     background-size: 100%;
     z-index:1001;
     position: fixed;
